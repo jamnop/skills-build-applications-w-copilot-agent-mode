@@ -6,18 +6,22 @@ import Leaderboard from './components/Leaderboard';
 import Teams from './components/Teams';
 import Users from './components/Users';
 import Workouts from './components/Workouts';
+import logo from './logo.svg'; // Use logo.svg as octofitapp-small logo
 
 function App() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div className="container-fluid">
-          <Link className="navbar-brand fw-bold" to="/">Octofit Tracker</Link>
+          <Link className="navbar-brand fw-bold d-flex align-items-center me-4" to="/">
+            <img src={logo} alt="Octofit Logo" className="octofit-logo" />
+            <span className="ms-2">Octofit Tracker</span>
+          </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul className="navbar-nav mb-2 mb-lg-0" style={{fontSize: '1.25rem'}}>
               <li className="nav-item"><Link className="nav-link" to="/activities">Activities</Link></li>
               <li className="nav-item"><Link className="nav-link" to="/leaderboard">Leaderboard</Link></li>
               <li className="nav-item"><Link className="nav-link" to="/teams">Teams</Link></li>
