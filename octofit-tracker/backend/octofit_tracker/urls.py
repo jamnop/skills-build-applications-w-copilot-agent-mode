@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView
+from django.http import HttpResponseRedirect
+import os
+
+def codespace_redirect(request):
+    codespace_name = os.environ.get('CODESPACE_NAME')
+    if codespace_name:
+        return HttpResponseRedirect(f'https://{codespace_name}-8000.app.github.dev/api/')
+    return HttpResponseRedirect('/api/')
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='/api/', permanent=True)),
+    path('', codespace_redirect),
     path('admin/', admin.site.urls),
     path('api/', include('octofit_tracker.api_urls')),
 ]
